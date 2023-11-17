@@ -1,0 +1,530 @@
+﻿
+<style>
+    .loader {
+        overflow: hidden;
+        font-size: 5px;
+        margin: 50px auto;
+        text-indent: -9999em;
+        width: 11em;
+        height: 11em;
+        border-radius: 50%;
+        background: #4682B4;
+        background: -moz-linear-gradient(left, #4682B4 10%, rgba(101,171,248, 0) 42%);
+        background: -webkit-linear-gradient(left, #4682B4 10%, rgba(101,171,248, 0) 42%);
+        background: -o-linear-gradient(left, #4682B4 10%, rgba(101,171,248, 0) 42%);
+        background: -ms-linear-gradient(left, #4682B4 10%, rgba(101,171,248, 0) 42%);
+        background: linear-gradient(to right, #4682B4 10%, rgba(101,171,248, 0) 42%);
+        position: relative;
+        -webkit-animation: load3 1.4s infinite linear;
+        animation: load3 1.4s infinite linear;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+        .loader:before {
+            width: 50%;
+            height: 50%;
+            background: #4682B4;
+            border-radius: 100% 0 0 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+        }
+
+        .loader:after {
+            background: white;
+            width: 75%;
+            height: 75%;
+            border-radius: 50%;
+            content: '';
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+    @@-webkit-keyframes load3 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @@keyframes load3 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    .layer {
+        align-content: center;
+        height: 440px;
+        margin-bottom: 25px;
+        margin-left: 22px;
+        margin-top: 20px;
+        width: 1600px;
+        min-width: 1300px;
+        overflow-y: scroll;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+@*---------------------------------------------------*@
+<style>
+    /* Style the tab */
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: #ccc;
+            }
+
+    /* Style the tab content */
+    .tabcontent1 {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+
+    /* Style the close button */
+    .topright {
+        float: right;
+        cursor: pointer;
+        font-size: 28px;
+    }
+
+        .topright:hover {
+            color: red;
+        }
+</style>
+@*-----------------------------------------------------------------*@
+
+
+<style>
+    .dan {
+        border-radius: 5px;
+        border-color: black;
+    }
+</style>
+
+<h3>Акты инвентаризации</h3>
+
+<div id="ServicesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" id='ServicesModalContent'>
+
+        </div>
+    </div>
+</div>
+
+<div id="ServicesModalDelete" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id='ServicesModalDeleteContent'>
+
+        </div>
+    </div>
+</div>
+
+@*----------------------------------------------------------------*@
+<div class="tab">
+    <button class="tablinks1" onclick="openCity(event, 'GetInventoriz')" id="defaultOpen">Просмотр инвентаризации</button>
+    <button class="tablinks1" onclick="openCity(event, 'FormInventoriz')">Формирование инвентаризации</button>
+
+</div>
+
+@*----------------------------------------------------------------------*@
+<div id="GetInventoriz" class="tabcontent1">
+    <h3>Просмотр инвентаризации</h3>
+    @*---------------------------------------------------------------------------------------*@
+
+    <table>
+
+        <tr>
+            <td colspan="7">
+                &nbsp;&nbsp;
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DropDownList("name", ViewBag.podr1 as SelectList, "Выберите филиал", new { @class = "form-control btn-block", id = "filial1" })
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <select id="datinv" name="datinv" class="form-control">
+                    <option selected value="0">Выберите дату инвентаризации</option>
+                </select>
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td align="center">
+                <button type="button" onclick="GetTableInv()" class="btn btn-default">Показать</button>
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <button type="button" class="btn btn-default" onclick="Report()">Акт инвентаризации(.XLS)</button>
+            </td>
+            <td>
+                &nbsp;&nbsp; с &nbsp;
+            </td>
+            <td>
+                <input type="date" class="form-control btn-block" id="Ss" style="width:150px;" />
+                <script>
+                    window.addEventListener('load',
+                        function (e) {
+                            var d = new Date();
+                            d.setDate(d.getDate() - 1);
+                            var day = d.getDate(); if (day < 10) day = '0' + day;
+                            var month = d.getMonth() + 1; if (month < 10) month = '0' + month;
+                            var year = d.getFullYear();
+                            document.getElementById("Ss").value = year + "-" + month + "-" + "01";
+                            
+                        }, false);
+                </script>
+            </td>
+            <td>
+                &nbsp;&nbsp; по &nbsp;
+            </td>
+            <td>
+                <input type="date" class="form-control btn-block" id="Popo" style="width:150px;" />
+                <script>
+                    var d = new Date();
+                    d.setDate(d.getDate() + 1);
+                    var day = d.getDate(); if (day < 10) day = '0' + day;
+                    var month = d.getMonth() + 1; if (month < 10) month = '0' + month;
+                    var year = d.getFullYear();
+                    document.getElementById("Popo").value = year + "-" + month + "-" + day;
+                </script>
+            </td>
+        </tr>
+
+    </table>
+    <hr>
+
+    @*------------------------------------------------------------------------------------*@
+
+    <style type="text/css">
+        TH {
+            background: #EFF5FB; /* Цвет фона */
+            border-bottom: double;
+        }
+
+        tr:nth-child(odd) {
+            background: #EFF5FB; /* Цвет фона */
+        }
+
+        tr:nth-child(even) {
+            background: #ffffff; /* Цвет фона */
+        }
+    </style>
+
+
+    <div id="tab">
+
+
+        <div id="Tableinv">
+
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+@*------------------------------------------------------------------------------------*@
+
+<style type="text/css">
+    TH {
+        background: #EFF5FB; /* Цвет фона */
+        border-bottom: double;
+    }
+
+    tr:nth-child(odd) {
+        background: #EFF5FB; /* Цвет фона */
+    }
+
+    tr:nth-child(even) {
+        background: #ffffff; /* Цвет фона */
+    }
+</style>
+
+
+<div id="tab">
+
+
+    <div id="Tableinv">
+
+    </div>
+</div>
+
+<div id="FormInventoriz" class="tabcontent1">
+    <h3>Сформировать инвентаризацию</h3>
+    @*----------------------------------------------------------------------*@
+
+    <table>
+        <tr>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+
+            <td>
+                &nbsp;&nbsp;
+            </td>
+
+            <td align="center">
+                Дата химанализа
+            </td>
+
+            <td>
+                &nbsp;&nbsp;
+            </td>
+
+            <td align="center">
+                Дата инвентаризации
+            </td>
+
+            <td>
+                &nbsp;&nbsp;
+            </td>
+
+            <td align="center">
+                Время инвентаризации
+            </td>
+
+            <td>
+                &nbsp;&nbsp;
+            </td>
+
+            <td>
+                &nbsp;&nbsp;
+            </td>
+        </tr>
+
+        <tr>
+        </tr>
+        <tr>
+            <td>
+                @Html.DropDownList("name", ViewBag.podr1 as SelectList, "Выберите филиал", new { @class = "form-control btn-block", id = "filial2" })
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <input type="date" class="form-control" id="dataHim" value="fffff">
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <input type="date" class="form-control" id="dataInvent">
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <select id="timeInvent" name="timeInvent" class="form-control">
+                    <option selected value="0">Выберите время инвентаризации</option>
+                    <option value="00:00:00">00:00</option>
+                    <option value="01:00:00">01:00</option>
+                    <option value="02:00:00">02:00</option>
+                    <option value="03:00:00">03:00</option>
+                    <option value="04:00:00">04:00</option>
+                    <option value="05:00:00">05:00</option>
+                    <option value="06:00:00">06:00</option>
+                    <option value="07:00:00">07:00</option>
+                    <option value="08:00:00">08:00</option>
+                    <option value="09:00:00">09:00</option>
+                    <option value="10:00:00">10:00</option>
+                    <option value="11:00:00">11:00</option>
+                    <option value="12:00:00">12:00</option>
+                    <option value="13:00:00">13:00</option>
+                    <option value="14:00:00">14:00</option>
+                    <option value="15:00:00">15:00</option>
+                    <option value="16:00:00">16:00</option>
+                    <option value="17:00:00">17:00</option>
+                    <option value="18:00:00">18:00</option>
+                    <option value="19:00:00">19:00</option>
+                    <option value="20:00:00">20:00</option>
+                    <option value="21:00:00">21:00</option>
+                    <option value="22:00:00">22:00</option>
+                    <option value="23:00:00">23:00</option>
+                </select>
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+
+            <td colspan="3" align="center">
+                <button type="button" onclick="LetGradTable()" class="btn btn-default">Сформировать</button>
+            </td>
+
+        </tr>
+
+    </table>
+
+    <hr>
+
+    <center>
+        <div class="loader" id="loadImg" style="display:none;">
+        </div>
+    </center>
+    <div id="search">
+    </div>
+
+
+    @*------------------------------------------------------------------------------------*@
+
+    <style type="text/css">
+        TH {
+            background: #EFF5FB; /* Цвет фона */
+            border-bottom: double;
+        }
+
+        tr:nth-child(odd) {
+            background: #EFF5FB; /* Цвет фона */
+        }
+
+        tr:nth-child(even) {
+            background: #ffffff; /* Цвет фона */
+        }
+    </style>
+
+
+    <div id="tab1">
+
+        <div id="Tableinv1">
+
+        </div>
+    </div>
+
+
+    <hr>
+</div>
+
+@*------------------------------------------------------------------------------------*@
+
+<style type="text/css">
+    TH {
+        background: #EFF5FB; /* Цвет фона */
+        border-bottom: double;
+    }
+
+    tr:nth-child(odd) {
+        background: #EFF5FB; /* Цвет фона */
+    }
+
+    tr:nth-child(even) {
+        background: #ffffff; /* Цвет фона */
+    }
+</style>
+
+
+<hr>
+
+@*<script>
+
+    $(function d() {
+        $('#filial1').change(function d() {
+            var ID = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetDatInv")/' + ID,
+                success: function d(data) {
+                    $('#datinv').replaceWith(data);
+                }
+            });
+        });
+    })
+</script>*@
+
+@*-------------------------------------------------------------------------*@
+<script>
+    $(function d() {
+        $('#filial1').change(function d() {
+            var data = {                
+                'Ss': $('#Ss').val(),
+                'Popo': $('#Popo').val(),
+                'ID': $('#filial1').val(),                
+            };                       
+            
+            $.ajax({
+                url: "/Home/GetDatInv",
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                data: JSON.stringify(data),
+                dataType: "html",
+                success: function (result) {
+                    $('#datinv').html(result);                   
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        })
+    })
+</script>
+
+    
+@*-------------------------------------------------------------------------*@
+
+
+
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent1, tablinks1;
+        tabcontent1 = document.getElementsByClassName("tabcontent1");
+        for (i = 0; i < tabcontent1.length; i++) {
+            tabcontent1[i].style.display = "none";
+        }
+        tablinks1 = document.getElementsByClassName("tablinks1");
+        for (i = 0; i < tablinks1.length; i++) {
+            tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>

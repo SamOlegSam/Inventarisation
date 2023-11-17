@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инвентаризация резервуарного парка</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+
+<body class="grad" onload="menuInit();">
+
+    <style>
+        .grad {
+            background-image: url(/Image/fon7.png);
+            background-repeat: round;
+            padding-top:10px;
+
+            
+        }
+
+        /*-------------------------------------------------*/
+        a.button9 {
+            position: relative;
+            display: inline-block;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;
+            user-select: none;
+            padding: 1em 2em;
+            outline: none;
+            border-radius: 3px / 100%;
+            background-image: linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%), linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,.3)), linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)), linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)), linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5)), linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5));
+            background-repeat: no-repeat;
+            background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+            background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+            box-shadow: rgba(0,0,0,.5) 3px 10px 10px -10px;
+        }
+
+            a.button9:hover {
+                transition: .5s linear;
+                background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+            }
+
+            a.button9:active {
+                top: 1px;
+                
+            }
+    </style>
+
+    @*-----------------------------------------------------------*@
+    <style>
+        .dws-menu *{
+            margin:0;
+            padding:0;
+            min-width:120px;
+        }
+        .dws-menu ul,
+        .dws-menu ol{
+            list-style:none;
+        }
+        .dws-menu > ul{
+            display:flex;
+            justify-content:center;
+        }
+            .dws-menu > ul li a {
+                display: block;
+                background: #ececed;
+                padding: 15px 30px 15px 40px;
+                font-size: 14px;
+                color: #454547;
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: all 0.3s ease;
+            }
+            .dws-menu > ul li {
+                position: relative;
+                border-left: 1px solid #c7c8ca;
+            }
+        .dws-menu > ul li:first-child{
+            border-left: 1px solid #b2b3b5;
+        }
+        .dws-menu > ul li:last-child {
+                border-left: 1px solid #babbbb;
+        }
+        .dws-menu li a:hover{
+                background:#454547;
+                color:#ffffff;
+                box-shadow: 1px 5px 10px -5px black;
+                transition: all 0.3s ease;
+        }
+        .dws-menu li ul{
+            position:absolute;
+            min-width:150px;
+            display:none;
+        }
+        .dws-menu li > ul li{
+            border: 1px solid #c7c8ca;
+        }
+        .dws-menu li > ul li a{
+            padding: 10px;
+            text-transform:none;
+            background: #e4e4e5;
+        }
+        .dws-menu li > ul li ul {
+            position:absolute;
+            right: -150px;
+            top:0px;
+        }
+        .dws-menu li:hover > ul{
+            display:block;
+        }
+        /*.headertable {
+            position: fixed;*/
+            /*height: 100px;*/
+            /*left: 0;
+            right: 0;
+        }*/
+
+    </style>
+    @*------------------------------------------------------------*@
+       
+    @*-----------------------------------------------------------------------------------*@
+    <header class="headertable">
+    <nav class="dws-menu">
+        <ul>
+            <li><a href="/Home/Index/">Главная</a></li>
+            <li><a href="/Home/Calc/">Калькулятор</a></li>
+            <li><a href="/Home/GradTables/">Градуировочные таблицы</a></li>
+            <li><a href="/Home/AktInvent/">Акт инвентаризации</a></li>
+            <li><a href="/Home/NormInformation/">Нормативная информация</a></li>
+            <li>
+                <a href="#">Филиалы</a>
+                <ul>
+                    <li>
+                        <a href="#">Мозырь</a>
+                        <ul>
+                            <li><a href="/Home/RezerMoz/">Резервуары</a></li>
+                            <li><a href="/Home/KomMoz/">Комиссия</a></li>
+                            <li><a href="/Home/ResursyMoz/">Ресурсы</a></li>
+                            <li><a href="/Home/CorrectMoz/">Корректировка</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Новополоцк</a>
+                        <ul>
+                            <li><a href="/Home/RezerNovop/">Резервуары</a></li>
+                            <li><a href="/Home/KomNovop/">Комиссия</a></li>
+                            <li><a href="/Home/ResursyNovop/">Ресурсы</a></li>
+                            <li><a href="/Home/CorrectNovop/">Корректировка</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a onclick="Reference()">Справка</a></li>
+        </ul>
+        </nav>
+        </header>
+    @*----------------------------------------------------------------------------------*@
+    
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="text-align:center">
+            <p>&copy; @DateTime.Now.Year Инвентаризация нефти в резервуарном парке ЛПДС "Мозырь"</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/inventariz.js"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="asopnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="act">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="unitid" Type="Int32" Nullable="false" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="shift" Type="Int32" />
+    <Property Name="number" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="qpnumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="vol" Type="Double" />
+    <Property Name="volstart" Type="Double" />
+    <Property Name="volend" Type="Double" />
+    <Property Name="mas" Type="Double" />
+    <Property Name="masstart" Type="Double" />
+    <Property Name="masend" Type="Double" />
+    <Property Name="t" Type="Double" />
+    <Property Name="pres" Type="Double" />
+    <Property Name="dens" Type="Double" />
+    <Property Name="dens20" Type="Double" />
+    <Property Name="masnetto" Type="Double" />
+    <Property Name="masballast" Type="Double" />
+    <Property Name="maslosses" Type="Double" />
+    <Property Name="masborder" Type="Double" />
+    <Property Name="dtsample" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="act_syn">
+    <Key>
+      <PropertyRef Name="ID_AS" />
+    </Key>
+    <Property Name="ID_AS" Type="Guid" Nullable="false" />
+    <Property Name="ID_AsGroup" Type="Guid" />
+    <Property Name="ID_SiknAct" Type="Guid" />
+    <Property Name="ID_RO" Type="Guid" />
+    <Property Name="ID_QUE" Type="Guid" />
+    <Property Name="ID_QP" Type="Guid" />
+    <Property Name="RepID" Type="Int32" />
+    <Property Name="ActDate" Type="DateTime" Precision="3" />
+    <Property Name="QueDate" Type="DateTime" Precision="3" />
+    <Property Name="ActNum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GroupActNum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="VolBrutto" Type="Double" />
+    <Property Name="MasBrutto" Type="Double" />
+    <Property Name="MasBlst" Type="Double" />
+    <Property Name="MasNettoSikn" Type="Double" />
+    <Property Name="MasOutage" Type="Double" />
+    <Property Name="MasNetto" Type="Double" />
+    <Property Name="MasNettoClear" Type="Double" />
+    <Property Name="MasNetto106" Type="Double" />
+    <Property Name="VolStart" Type="Double" />
+    <Property Name="VolEnd" Type="Double" />
+    <Property Name="MasStart" Type="Double" />
+    <Property Name="MasEnd" Type="Double" />
+    <Property Name="OLevelStart" Type="Double" />
+    <Property Name="OLevelEnd" Type="Double" />
+    <Property Name="WLevelStart" Type="Double" />
+    <Property Name="WLevelEnd" Type="Double" />
+    <Property Name="DrawTime" Type="DateTime" Precision="3" />
+    <Property Name="LogDate" Type="DateTime" Precision="3" />
+    <Property Name="Shift" Type="Int32" />
+    <Property Name="RoName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TankID" Type="Int32" />
+    <Property Name="ConsumerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OriginName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lcontrol" Type="Boolean" />
+    <Property Name="ltransfer" Type="Boolean" />
+    <Property Name="MasBruttoBound" Type="Double" />
+    <Property Name="lprizn_transp" Type="Boolean" />
+    <Property Name="indexInGroup" Type="Int32" />
+    <Property Name="mprizn" Type="Boolean" />
+    <Property Name="mpart" Type="Double" />
+    <Property Name="GroupClosed" Type="Boolean" />
+    <Property Name="mpclear" Type="Double" />
+    <Property Name="mpbound" Type="Double" />
+    <Property Name="mp106" Type="Double" />
+    <Property Name="mpsikn" Type="Double" />
+    <Property Name="mppart" Type="Double" />
+    <Property Name="mpmasclear" Type="Double" />
+    <Property Name="mpmasbound" Type="Double" />
+    <Property Name="mpmassikn" Type="Double" />
+    <Property Name="mpmasbrutto" Type="Double" />
+    <Property Name="mpmasvolume" Type="Double" />
+    <Property Name="mpmas106" Type="Double" />
+    <Property Name="mvpart" Type="Double" />
+  </EntityType>
+  <EntityType Name="act_tank">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtsample" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="tank" Type="Int32" />
+    <Property Name="unitid" Type="Int32" />
+    <Property Name="number" Type="Int32" />
+    <Property Name="qpnumber" Type="Int32" />
+    <Property Name="shift" Type="Int32" Nullable="false" />
+    <Property Name="levelstart" Type="Double" />
+    <Property Name="levelend" Type="Double" />
+    <Property Name="wlevelstart" Type="Double" />
+    <Property Name="wlevelend" Type="Double" />
+    <Property Name="vol" Type="Double" />
+    <Property Name="mas" Type="Double" />
+    <Property Name="temp" Type="Double" />
+    <Property Name="pres" Type="Double" />
+    <Property Name="dens" Type="Double" />
+    <Property Name="dens20" Type="Double" />
+    <Property Name="masnetto" Type="Double" />
+    <Property Name="masbalast" Type="Double" />
+    <Property Name="qpid" Type="Guid" />
+    <Property Name="maslosses" Type="Double" />
+    <Property Name="masborder" Type="Double" />
+  </EntityType>
+  <EntityType Name="calibration">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tankid" Type="Int32" Nullable="false" />
+    <Property Name="oillevel" Type="Int32" Nullable="false" />
+    <Property Name="oilvolume" Type="Double" Nullable="false" />
+    <Property Name="filialid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="calibrationARCHIV">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tankid" Type="Int32" Nullable="false" />
+    <Property Name="oillevel" Type="Int32" Nullable="false" />
+    <Property Name="oilvolume" Type="Double" Nullable="false" />
+    <Property Name="filialid" Type="Int32" />
+    <Property Name="DateActual" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Correct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="filial" Type="Int32" />
+    <Property Name="tankid" Type="Int32" />
+    <Property Name="Uroven" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="Temp" Type="Decimal" Precision="18" Scale="1" />
+  </EntityType>
+  <EntityType Name="filials">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="units" Relationship="Self.FK__units__filialid__628FA481" FromRole="filials" ToRole="units" />
+    <NavigationProperty Name="Podpisanty" Relationship="Self.FK_Podpisanty_filials" FromRole="filials" ToRole="Podpisanty" />
+    <NavigationProperty Name="ResursiNefti" Relationship="Self.FK_ResursiNefti_filials" FromRole="filials" ToRole="ResursiNefti" />
+  </EntityType>
+  <EntityType Name="oper">
+    <Key>
+      <PropertyRef Name="type" />
+      <PropertyRef Name="unitid" />
+      <PropertyRef Name="dt" />
+      <PropertyRef Name="line" />
+    </Key>
+    <Property Name="id" Type="Guid" />
+    <Property Name="type" Type="Int16" Nullable="false" />
+    <Property Name="unitid" Type="Int32" Nullable="false" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="line" Type="Int32" Nullable="false" />
+    <Property Name="volhour" Type="Double" />
+    <Property Name="voltotal" Type="Double" />
+    <Property Name="mashour" Type="Double" />
+    <Property Name="mastotal" Type="Double" />
+    <Property Name="t" Type="Double" />
+    <Property Name="pres" Type="Double" />
+    <Property Name="dens" Type="Double" />
+    <Property Name="dens20" Type="Double" />
+    <Property Name="dens15" Type="Double" />
+    <Property Name="tbik" Type="Double" />
+    <Property Name="presbik" Type="Double" />
+    <Property Name="vol20" Type="Double" />
+    <Property Name="vol15" Type="Double" />
+    <Property Name="visc" Type="Double" />
+  </EntityType>
+  <EntityType Name="Podpisanty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDFilial" Type="Int32" />
+    <Property Name="Doljnost" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Nazn" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="filials" Relationship="Self.FK_Podpisanty_filials" FromRole="Podpisanty" ToRole="filials" />
+  </EntityType>
+  <EntityType Name="qpass">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="unitid" Type="Int32" Nullable="false" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtsample" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="number" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="shift" Type="Int32" />
+    <Property Name="t" Type="Double" />
+    <Property Name="pres" Type="Double" />
+    <Property Name="dens" Type="Double" />
+    <Property Name="dens20" Type="Double" />
+    <Property Name="dens15" Type="Double" />
+    <Property Name="water" Type="Double" />
+    <Property Name="saltmg" Type="Double" />
+    <Property Name="saltprc" Type="Double" />
+    <Property Name="mechan" Type="Double" />
+    <Property Name="sulphur" Type="Double" />
+    <Property Name="vaporpres" Type="Double" />
+    <Property Name="ballast" Type="Double" />
+    <Property Name="fr200" Type="Double" />
+    <Property Name="fr300" Type="Double" />
+    <Property Name="fr350" Type="Double" />
+    <Property Name="paraffin" Type="Double" />
+    <Property Name="hydrogen" Type="Double" />
+    <Property Name="mercaptan" Type="Double" />
+    <Property Name="organic" Type="Double" />
+    <Property Name="mercaptanstr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="organicstr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="designpet" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="laborant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="operator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="qpass_tank">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtclose" Type="DateTime" Precision="3" />
+    <Property Name="levelsclose" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="tank" Type="Int32" />
+    <Property Name="number" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="densar" Type="Double" />
+    <Property Name="tempar" Type="Double" />
+    <Property Name="pres" Type="Double" />
+    <Property Name="temp" Type="Double" />
+    <Property Name="dens" Type="Double" />
+    <Property Name="dens20" Type="Double" />
+    <Property Name="dens15" Type="Double" />
+    <Property Name="water" Type="Double" />
+    <Property Name="saltmg" Type="Double" />
+    <Property Name="saltprc" Type="Double" />
+    <Property Name="mechan" Type="Double" />
+    <Property Name="sulphur" Type="Double" />
+    <Property Name="visc" Type="Double" />
+    <Property Name="fr200" Type="Double" />
+    <Property Name="fr300" Type="Double" />
+    <Property Name="fr350" Type="Double" />
+    <Property Name="vaporpres" Type="Double" />
+    <Property Name="paraffin" Type="Double" />
+    <Property Name="hydrogen" Type="Double" />
+    <Property Name="mercaptan" Type="Double" />
+    <Property Name="organic" Type="Double" />
+    <Property Name="mercaptan_str" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="organic_str" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="designpet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="operatorid" Type="Guid" Nullable="false" />
+    <Property Name="user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ResursiNefti">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idFilial" Type="Int32" />
+    <Property Name="Naimenovanie" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="VNefti" Type="Decimal" Precision="10" Scale="1" />
+    <NavigationProperty Name="filials" Relationship="Self.FK_ResursiNefti_filials" FromRole="ResursiNefti" ToRole="filials" />
+  </EntityType>
+  <EntityType Name="shift">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="unitid" Type="Int32" Nullable="false" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="shift1" Type="Int32" Nullable="false" />
+    <Property Name="vol" Type="Double" />
+    <Property Name="volstart" Type="Double" />
+    <Property Name="volend" Type="Double" />
+    <Property Name="mas" Type="Double" />
+    <Property Name="masstart" Type="Double" />
+    <Property Name="masend" Type="Double" />
+    <Property Name="t" Type="Double" />
+    <Property Name="pres" Type="Double" />
+    <Property Name="dens" Type="Double" />
+    <Property Name="dens20" Type="Double" />
+    <Property Name="dens15" Type="Double" />
+    <Property Name="vol20" Type="Double" />
+    <Property Name="vol15" Type="Double" />
+    <Property Name="masnetto" Type="Double" />
+    <Property Name="masballast" Type="Double" />
+    <Property Name="dtstart" Type="DateTime" Precision="3" />
+    <Property Name="actnumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="omniid" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="visc" Type="Double" />
+  </EntityType>
+  <EntityType Name="sut">
+    <Key>
+      <PropertyRef Name="unitid" />
+      <PropertyRef Name="fordate" />
+    </Key>
+    <Property Name="id" Type="Guid" />
+    <Property Name="unitid" Type="Int32" Nullable="false" />
+    <Property Name="fordate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="t" Type="Double" />
+    <Property Name="pres" Type="Double" />
+    <Property Name="dens" Type="Double" />
+    <Property Name="dens20" Type="Double" />
+    <Property Name="dens15" Type="Double" />
+    <Property Name="water" Type="Double" />
+    <Property Name="mass" Type="Int32" />
+    <Property Name="volume" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="taginfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="value" Type="Double" />
+    <Property Name="t" Type="Double" />
+    <Property Name="p" Type="Double" />
+  </EntityType>
+  <EntityType Name="tags">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tagsuzr">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="qvtotal" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="t" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="p" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tankinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="filialid" Type="Int32" Nullable="false" />
+    <Property Name="tankid" Type="Int32" Nullable="false" />
+    <Property Name="level" Type="Int32" />
+    <Property Name="t" Type="Double" />
+  </EntityType>
+  <EntityType Name="TankInv">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Filial" Type="Int32" Nullable="false" />
+    <Property Name="Rezer" Type="Int32" Nullable="false" />
+    <Property Name="Urov" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="UrovH2O" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="UrovNeft" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="VNeft" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="Temp" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="P" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="MassaBrutto" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="H2O" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="Salt" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="Meh" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="BalProc" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="BalTonn" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="MassaNetto" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="HMim" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="VMin" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="MBalMin" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="MNettoMin" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="VTeh" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="MBalTeh" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="MNettoTeh" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="MNettoTov" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+    <Property Name="V" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="VH2O" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tanktags">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="t" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="filialid" Type="Int32" />
+    <Property Name="tankid" Type="Int32" />
+    <Property Name="typeid" Type="Int16" />
+    <Property Name="enable" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trl_tank">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MinDopLevel" Type="Double" />
+    <Property Name="MinDopVol" Type="Double" />
+    <Property Name="MaxVolume" Type="Double" />
+    <Property Name="grdTemper" Type="Double" />
+    <Property Name="volCoef" Type="Double" />
+    <Property Name="WorkVolume" Type="Double" />
+    <Property Name="TankID" Type="Int32" />
+    <Property Name="FilialID" Type="Int32" />
+    <NavigationProperty Name="trl_tanktype" Relationship="Self.FK_trl_tank_trl_tanktype" FromRole="trl_tank" ToRole="trl_tanktype" />
+  </EntityType>
+  <EntityType Name="trl_tanktype">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsSteel" Type="Int16" />
+    <NavigationProperty Name="trl_tank" Relationship="Self.FK_trl_tank_trl_tanktype" FromRole="trl_tanktype" ToRole="trl_tank" />
+  </EntityType>
+  <EntityType Name="twohours">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="unitid" Type="Int32" Nullable="false" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtwrite" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="h2" Type="Int32" Nullable="false" />
+    <Property Name="h4" Type="Int32" Nullable="false" />
+    <Property Name="h6" Type="Int32" Nullable="false" />
+    <Property Name="h8" Type="Int32" Nullable="false" />
+    <Property Name="h10" Type="Int32" Nullable="false" />
+    <Property Name="h12" Type="Int32" Nullable="false" />
+    <Property Name="h14" Type="Int32" Nullable="false" />
+    <Property Name="h16" Type="Int32" Nullable="false" />
+    <Property Name="h18" Type="Int32" Nullable="false" />
+    <Property Name="h20" Type="Int32" Nullable="false" />
+    <Property Name="h22" Type="Int32" Nullable="false" />
+    <Property Name="h24" Type="Int32" Nullable="false" />
+    <Property Name="t" Type="Double" />
+    <Property Name="p" Type="Double" />
+  </EntityType>
+  <EntityType Name="twohoursconf">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="unitid" Type="Int32" Nullable="false" />
+    <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hour" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="units">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="filialid" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="filials" Relationship="Self.FK__units__filialid__628FA481" FromRole="units" ToRole="filials" />
+  </EntityType>
+  <EntityType Name="trl_tankview">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="TypeID" />
+      <PropertyRef Name="TypeName" />
+      <PropertyRef Name="TankName" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MinDopLevel" Type="Double" />
+    <Property Name="MinDopVol" Type="Double" />
+    <Property Name="grdTemper" Type="Double" />
+    <Property Name="volCoef" Type="Double" />
+    <Property Name="MaxVolume" Type="Double" />
+    <Property Name="WorkVolume" Type="Double" />
+    <Property Name="TankID" Type="Int32" />
+    <Property Name="FilialID" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsSteel" Type="Int16" />
+  </EntityType>
+  <EntityType Name="unicUID">
+    <Key>
+      <PropertyRef Name="unitid" />
+    </Key>
+    <Property Name="unitid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__units__filialid__628FA481">
+    <End Role="filials" Type="Self.filials" Multiplicity="1" />
+    <End Role="units" Type="Self.units" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filials">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="units">
+        <PropertyRef Name="filialid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Podpisanty_filials">
+    <End Role="filials" Type="Self.filials" Multiplicity="0..1" />
+    <End Role="Podpisanty" Type="Self.Podpisanty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filials">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Podpisanty">
+        <PropertyRef Name="IDFilial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResursiNefti_filials">
+    <End Role="filials" Type="Self.filials" Multiplicity="0..1" />
+    <End Role="ResursiNefti" Type="Self.ResursiNefti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filials">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ResursiNefti">
+        <PropertyRef Name="idFilial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trl_tank_trl_tanktype">
+    <End Role="trl_tanktype" Type="Self.trl_tanktype" Multiplicity="1" />
+    <End Role="trl_tank" Type="Self.trl_tank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trl_tanktype">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="trl_tank">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="asopnEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="act" EntityType="Self.act" />
+    <EntitySet Name="act_syn" EntityType="Self.act_syn" />
+    <EntitySet Name="act_tank" EntityType="Self.act_tank" />
+    <EntitySet Name="calibration" EntityType="Self.calibration" />
+    <EntitySet Name="calibrationARCHIV" EntityType="Self.calibrationARCHIV" />
+    <EntitySet Name="Correct" EntityType="Self.Correct" />
+    <EntitySet Name="filials" EntityType="Self.filials" />
+    <EntitySet Name="oper" EntityType="Self.oper" />
+    <EntitySet Name="Podpisanty" EntityType="Self.Podpisanty" />
+    <EntitySet Name="qpass" EntityType="Self.qpass" />
+    <EntitySet Name="qpass_tank" EntityType="Self.qpass_tank" />
+    <EntitySet Name="ResursiNefti" EntityType="Self.ResursiNefti" />
+    <EntitySet Name="shift" EntityType="Self.shift" />
+    <EntitySet Name="sut" EntityType="Self.sut" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="taginfo" EntityType="Self.taginfo" />
+    <EntitySet Name="tags" EntityType="Self.tags" />
+    <EntitySet Name="tagsuzr" EntityType="Self.tagsuzr" />
+    <EntitySet Name="tankinfo" EntityType="Self.tankinfo" />
+    <EntitySet Name="TankInv" EntityType="Self.TankInv" />
+    <EntitySet Name="tanktags" EntityType="Self.tanktags" />
+    <EntitySet Name="trl_tank" EntityType="Self.trl_tank" />
+    <EntitySet Name="trl_tanktype" EntityType="Self.trl_tanktype" />
+    <EntitySet Name="twohours" EntityType="Self.twohours" />
+    <EntitySet Name="twohoursconf" EntityType="Self.twohoursconf" />
+    <EntitySet Name="units" EntityType="Self.units" />
+    <EntitySet Name="trl_tankview" EntityType="Self.trl_tankview" />
+    <EntitySet Name="unicUID" EntityType="Self.unicUID" />
+    <AssociationSet Name="FK__units__filialid__628FA481" Association="Self.FK__units__filialid__628FA481">
+      <End Role="filials" EntitySet="filials" />
+      <End Role="units" EntitySet="units" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Podpisanty_filials" Association="Self.FK_Podpisanty_filials">
+      <End Role="filials" EntitySet="filials" />
+      <End Role="Podpisanty" EntitySet="Podpisanty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResursiNefti_filials" Association="Self.FK_ResursiNefti_filials">
+      <End Role="filials" EntitySet="filials" />
+      <End Role="ResursiNefti" EntitySet="ResursiNefti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trl_tank_trl_tanktype" Association="Self.FK_trl_tank_trl_tanktype">
+      <End Role="trl_tanktype" EntitySet="trl_tanktype" />
+      <End Role="trl_tank" EntitySet="trl_tank" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(asopnModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(asopnModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

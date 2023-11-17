@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Inventariz.Models.trl_tank>
+
+<h3>Резервуары ЛПДС Полоцк</h3>
+<hr>
+
+<div id="ServicesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" id='ServicesModalContent'>
+
+        </div>
+    </div>
+</div>
+
+<div id="ServicesModalDelete" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id='ServicesModalDeleteContent'>
+
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    TH {
+        background: #EFF5FB; /* Цвет фона */
+        border-bottom: double;
+    }
+
+    tr:nth-child(odd) {
+        background: #EFF5FB; /* Цвет фона */
+    }
+
+    tr:nth-child(even) {
+        background: #ffffff; /* Цвет фона */
+    }
+</style>
+
+<p>
+    <button type="button" class="btn btn-gradient waves-light waves-effect w-xs" onclick="AddRezerNovop(0)"><i class="mdi mdi-library-plus"></i> Добавить новый резервуар</button>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Номер
+        </th>
+
+        <th>
+            Ноименование
+        </th>
+
+        <th>
+            Тип
+        </th>
+        <th>
+            Мин.допустимый уровень
+        </th>
+
+        <th>
+            Мин.допустимый объем
+        </th>
+
+
+        <th>
+            &nbsp;
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TankID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinDopLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinDopVol)
+            </td>
+            <td>
+                <button type="button" class="btn btn-icon waves-effect waves-light btn-info" onclick="RezerEdit(@item.ID)"> <i class="mdi mdi-settings"></i>Редактировать</button>
+                <button type="button" class="btn btn-icon waves-effect waves-light btn-danger" onclick="DeleteRezer(@item.ID)"> <i class="mdi mdi-delete"></i>Удалить</button>
+            </td>
+        </tr>
+    }
+
+</table>
